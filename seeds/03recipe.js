@@ -8,17 +8,17 @@ exports.seed = function(knex) {
         {
           name: 'ginger snaps',
           url: '../images/ginger_snap.jpg',
-          user_id:1
+          author_id:1
           },
         {
           name: 'gaucamole',
           url: '../images/gaucamole.jpeg',
-          user_id:3
+          author_id:3
           },
         {
           name: 'deviled eggs',
           url: '../images/deviled_eggs.jpeg',
-          user_id:1
+          author_id:1
           }
         ]);
     });

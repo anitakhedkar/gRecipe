@@ -4,7 +4,7 @@ exports.up = function(knex) {
     table.integer('rating');
     table.string('body');
     table.timestamp('created_at').defaultTo(knex.fn.now());
-    table.integer('user_id').references('id').inTable('user');
+    table.integer('author_id').references('id').inTable('author');
     table.integer('recipe_id').notNullable().references('id').inTable('recipe')
     .onDelete('cascade');
 

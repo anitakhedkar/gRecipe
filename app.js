@@ -2,7 +2,11 @@ const express = require('express')
 const app = express()
 const PORT = process.env.PORT || 8000
 const bodyParser = require('body-parser')
+const recipe = require('./routes/recipe')
 
+
+
+app.use('/recipe', recipe)
 
 
 app.listen(PORT, ()=> {

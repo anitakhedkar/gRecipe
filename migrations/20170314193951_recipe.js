@@ -3,7 +3,7 @@ exports.up = function(knex) {
     table.increments();
     table.string('name');
     table.string('url');
-    table.integer('user_id').notNullable().references('id').inTable('user')
+    table.integer('author_id').notNullable().references('id').inTable('author')
     .onDelete('cascade');
 
   })
