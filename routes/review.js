@@ -50,3 +50,5 @@ router.delete('/:id', (req,res) => {
       res.send("successfully deleted comment:"+ id)
     })
 })
+
+module.exports = router 
