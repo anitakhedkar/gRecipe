@@ -47,7 +47,7 @@ router.post('/', (req, res) => {
 router.delete('/:id', (req,res) => {
   knex('review').where('id', req.params.id).del()
   .then(id => {
-      res.send("successfully deleted comment:"+ id)
+      res.send("successfully deleted review:"+ id)
     })
 })
 
