@@ -42,7 +42,6 @@ router.put('/:id', (req,res) => {
   })
   })
 
-
 router.delete('/:id', (req,res) => {
   knex('step').where('id', req.params.id).del()
   .then(id => {
