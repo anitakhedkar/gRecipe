@@ -23,15 +23,17 @@ router.post('/', (req, res) => {
     });
 })
 
-// router.put('/:id/:rid', function(req, res){
-//   knex('ingredient_recipe').where('id', req.params.id).update({
-//     rating:req.body.rating,
-//     body:req.body.body
-//   })
-//   .then(id => {
-//     res.send("successfully updated review:"+ id)
-//   })
-// })
+router.put('/:id', function(req, res){
+  knex('ingredient_recipe').where('id', req.params.id).update({
+    ingredient_id:req.body.ingredient_id,
+    recipe_id:req.body.recipe_id,
+    unit:req.body.unit,
+    quantiy:req.body.quantity
+  })
+  .then(id => {
+    res.send("successfully updated ingredient_recipe")
+  })
+})
 
 router.delete('/:id', (req,res) => {
   knex('ingredient_recipe').where('id', req.params.id).del()
