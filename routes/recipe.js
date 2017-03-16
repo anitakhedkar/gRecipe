@@ -42,19 +42,44 @@ router.put('/:id', function(req, res){
   })
 })
 
-//CREATE RECIPE//USE Promise.ALL
+//CREATE RECIPE//
 router.post('/', function(req, res) {
-    knex('recipe').insert({
-            name: req.body.name,
-            body: req.body.body,
-            url: req.body.url
-        }, 'id')
+  //if email is already used/
+    var authorID;
+    console.log(req.body);
+    knex('author').where('email', req.body.email).select('id').then(result => {
+        authorID = result[0].id
+        return knex('recipe').insert({
+          author_id: authorID,
+          name: req.body.name,
+          body: req.body.body,
+          url: req.body.url
+        }, ['author_id', 'name', 'body', 'url'])
         .then(function(result) {
-          for (var i = 0; i < req.body.ingredients.length; i++) {
-            req.body.ingredients[i]
-          }
+          res.json(result)
         })
     })
+        .catch(result => {
+            //create new Author
+            knex('author').insert({
+                    email: req.body.email,
+                    name: req.body.name,
+                }, 'id')
+                //create recipe
+                .then(result => {
+                  console.log(result);
+                    return knex('recipe').insert({
+                            author_id: result[0],
+                            name: req.body.name,
+                            body: req.body.body,
+                            url:req.body.url
+                        }, ['author_id', 'name', 'body', 'url'])
+                        .then(result => {
+                            res.json(result)
+                        });
+                })
+        })
+});
 
 
 
