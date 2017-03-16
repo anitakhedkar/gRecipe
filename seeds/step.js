@@ -19,6 +19,11 @@ exports.seed = function(knex) {
           number:3 ,
           description: 'On a platter arrange lettuce, tomatoes, sweet pepper, bacon, and green onions. Arrange eggs on greens. Drizzle with Dill Vinaigrette. Makes 6 to 8 servings.',
           recipe_id:3
+        },
+        {
+          number:1 ,
+          description: 'Bla bla bla bla',
+          recipe_id:4
           }
         ]);
     });

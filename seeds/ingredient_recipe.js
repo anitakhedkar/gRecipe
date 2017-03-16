@@ -46,6 +46,12 @@ exports.seed = function(knex) {
         unit:'whole',
         recipe_id:2,
         ingredient_id:7
+        },
+        {
+        quantity:1,
+        unit:'whole',
+        recipe_id:4,
+        ingredient_id:7
       }
       ]);
     });

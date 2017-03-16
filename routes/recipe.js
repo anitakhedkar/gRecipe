@@ -19,7 +19,6 @@ router.get('/', function(req, res){
     })
 });
 
-
 router.get('/:id', function(req, res){
   knex('recipe')
     .where('id', req.params.id).first()
@@ -30,6 +29,34 @@ router.get('/:id', function(req, res){
     console.log(error);
   })
 })
+
+router.put('/:id', function(req, res){
+  console.log(req.body);
+  knex('recipe').where('id', req.params.id).update({
+    name:req.body.name,
+    url:req.body.url,
+    body:req.body.body
+  })
+  .then(id => {
+    res.send("successfully updated recipe:"+ id)
+  })
+})
+
+//CREATE RECIPE//USE Promise.ALL
+router.post('/', function(req, res) {
+    knex('recipe').insert({
+            name: req.body.name,
+            body: req.body.body,
+            url: req.body.url
+        }, 'id')
+        .then(function(result) {
+          for (var i = 0; i < req.body.ingredients.length; i++) {
+            req.body.ingredients[i]
+          }
+        })
+    })
+
+
 
 router.delete('/:id', (req,res) =>{
   knex('recipe').where('id', req.params.id).del()
@@ -49,9 +76,5 @@ router.delete('/:id', (req,res) =>{
     })
   })
 })
-
-
-
-
 
 module.exports = router

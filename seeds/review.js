@@ -28,6 +28,12 @@ exports.seed = function(knex) {
           body: 'This is the best gaucamole recipe I have seen. Very easy to make and delicious.',
           author_id:3,
           recipe_id:2
+        },
+        {
+          rating:1,
+          body: 'Bla b;askjdfhsdjkhfsajkhfksjdhgkajfhgjdafhgfldjhglkjf',
+          author_id:4,
+          recipe_id:4
         }
 
       ]);

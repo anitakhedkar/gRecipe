@@ -3,6 +3,7 @@ exports.up = function(knex) {
     table.increments();
     table.string('name');
     table.string('url');
+    table.string('body');
     table.integer('author_id').notNullable().references('id').inTable('author')
     .onDelete('cascade');
 
